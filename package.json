@@ -1,0 +1,17 @@
+{
+  "name": "reactjswyszgif",
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  },
+  
+  "version": "1.0.0",
+  "description": "\"wyszukiwarka gifow\"",
+  "main": "script.js",
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"
+  },
+  "author": "\"Wojciech Szczyrba\"",
+  "license": "ISC"
+}
