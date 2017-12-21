@@ -13,13 +13,35 @@ App = React.createClass({
     this.setState({
       loading: true
     });
-    this.getGif(searchingText, function(gif) {
+    this.getGif(searchingText).then((gif) => {
       this.setState({
         loading: false,
         gif: gif,
         searchingText: searchingText
       });
-    }.bind(this));
+    });
+  },
+  
+  getGif: function(searchText) {
+    return new Promise (
+      function(resolve, reject) {
+        const url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            let = JSON.parse(xhr.responseText).data;
+            let gif = {
+              url: data.fixed_width_downsampled_url,
+              sourceUrl: data.url
+            };
+            resolve(gif);
+          }
+
+        };
+        xhr.send();
+
+      })
   },
   
   getGif: function(searchingText, callback) {
