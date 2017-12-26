@@ -22,7 +22,7 @@ App = React.createClass({
     });
   },
   
-  getGif: function(searchText) {
+  getGif: function(searchingText) {
     return new Promise (
       function(resolve, reject) {
         const url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;
@@ -30,7 +30,7 @@ App = React.createClass({
         xhr.open('GET', url);
         xhr.onload = function() {
           if (xhr.status === 200) {
-            let = JSON.parse(xhr.responseText).data;
+            let data = JSON.parse(xhr.responseText).data;
             let gif = {
               url: data.fixed_width_downsampled_url,
               sourceUrl: data.url
